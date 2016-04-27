@@ -1,7 +1,7 @@
 # Flying Particles
- This is 4k intro project with stateless particles. <br/>
+ This is a 4k intro project with stateless particles. <br/>
  Particle trajectory, size, color and other parameters are defined by function depending on time.<br/>
- So this implementation allows you easily control animation time.<br/>
+ So this implementation allows you to easily control animation time.<br/>
 
 # Controls
  This demo supports control of various particle system parameters.<br/>
