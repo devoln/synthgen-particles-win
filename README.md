@@ -1,16 +1,20 @@
 # Flying Particles
- This is a 4k intro project with stateless particles. <br/>
- Particle trajectory, size, color and other parameters are defined by function depending on time.<br/>
- So this implementation allows you to easily control animation time.<br/>
+ This is a 4k intro project with stateless particles.
+ 
+ Particle trajectory, size, color and other parameters are defined by function depending on time.
+ 
+ So this implementation allows you to easily control animation time.
+ 
 
 # Controls
- This demo supports control of various particle system parameters.<br/>
- To change size and number of particles use keys 1-9.<br/>
- You can change speed of the demo with Shift and Ctrl buttons.<br/>
- Use Left and Right arrow keys to change the direction of animation time.<br/>
- Up and down arrows while pressed speed up animation x5 in forward and backward directions respectively.<br/>
- P - pause\resume.<br/>
- I - restart particle animation.<br/>
+ This demo supports control of various particle system parameters:
+ 
+- To change size and number of particles use keys 1-9.
+- You can change speed of the demo with Shift and Ctrl buttons.
+- Use Left and Right arrow keys to change the direction of animation time.
+- Up and down arrows while pressed speed up animation x5 in forward and backward directions respectively.
+- P - pause\resume.
+- I - restart particle animation.
 
 
 # Описание на русском языке (in Russian)
