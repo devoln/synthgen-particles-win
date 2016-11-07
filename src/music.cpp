@@ -1,4 +1,4 @@
-#include "music.h"
+п»ї#include "music.h"
 #include <math.h>
 #include <string.h>
 
@@ -74,16 +74,16 @@ void convert_to_shorts(short* dst, float* src, unsigned count)
 
 float temp[500000];
 
-//Создаёт буфер из суммы 15 затухающих синусов с разными громкостями и скоростями затухания
+//РЎРѕР·РґР°С‘С‚ Р±СѓС„РµСЂ РёР· СЃСѓРјРјС‹ 15 Р·Р°С‚СѓС…Р°СЋС‰РёС… СЃРёРЅСѓСЃРѕРІ СЃ СЂР°Р·РЅС‹РјРё РіСЂРѕРјРєРѕСЃС‚СЏРјРё Рё СЃРєРѕСЂРѕСЃС‚СЏРјРё Р·Р°С‚СѓС…Р°РЅРёСЏ
 void GuitarNote(short* dst, float frequency, float duration)
 {
 	int sampleCount = int(duration*SAMPLE_RATE);
 
-	//Амплитуды гармоник
+	//РђРјРїР»РёС‚СѓРґС‹ РіР°СЂРјРѕРЅРёРє
 	static const float volumes[15] = {0.24f, 0.0855f, 0.031f, 0.0015f, 0.018f,
 		0.0325f, 0.041f, 0.0204f, 0.0035f, 0.011f, 0.0236f, 0.01475f, 0.0006923f, 0.012f, 0.016f};
 
-	//Коэффициенты затухания гармоник
+	//РљРѕСЌС„С„РёС†РёРµРЅС‚С‹ Р·Р°С‚СѓС…Р°РЅРёСЏ РіР°СЂРјРѕРЅРёРє
 	static const float attenuations[15] = {1.7f, 2.85f, 4.0f, 5.15f,
 		6.3f, 7.45f, 8.6f, 9.75f, 10.9f, 12.05f, 13.2f, 14.35f, 15.5f, 16.65f, 17.8f};
 
@@ -94,7 +94,7 @@ void GuitarNote(short* dst, float frequency, float duration)
 	}
 	convert_to_shorts(dst, temp, sampleCount);
 
-	//Не оптимизированная, но более компактная версия
+	//РќРµ РѕРїС‚РёРјРёР·РёСЂРѕРІР°РЅРЅР°СЏ, РЅРѕ Р±РѕР»РµРµ РєРѕРјРїР°РєС‚РЅР°СЏ РІРµСЂСЃРёСЏ
 #if 0
 	for(int h=0; h<15; h++)
 	{

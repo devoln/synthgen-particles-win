@@ -1,4 +1,4 @@
-#include "util.h"
+﻿#include "util.h"
 #include <GL/wglext.h>
 
 void GL::InitExtensions() const

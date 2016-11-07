@@ -1,4 +1,4 @@
-
+п»ї
 
 #include <math.h>
 #include "util.h"
@@ -20,7 +20,7 @@ extern "C" int _fltused = 0;
 
 // /CRINKLER
 // /CRINKLER /HASHTRIES:300 /COMPMODE:SLOW /ORDERTRIES:4000  /UNALIGNCODE /REPORT:.\exe\out.html
-//Первое намного быстрее, и не сильно уступает в сжатии
+//РџРµСЂРІРѕРµ РЅР°РјРЅРѕРіРѕ Р±С‹СЃС‚СЂРµРµ, Рё РЅРµ СЃРёР»СЊРЅРѕ СѓСЃС‚СѓРїР°РµС‚ РІ СЃР¶Р°С‚РёРё
 
 
 

@@ -1,4 +1,4 @@
-#pragma once
+п»ї#pragma once
 
 static const char* const VertexShaderTemplate = 
 	"#version 130\r\n"
@@ -33,28 +33,28 @@ static const char* const VertexShaderTemplate =
 
     "void main()"
     "{"
-		//Идентификация частицы и вычисление основных параметров
-		"float minTLT=min(Time,LifeTime);" //Сколько времени назад ни одной из обрабатываемых в кадре частиц ещё не существовало
+		//РРґРµРЅС‚РёС„РёРєР°С†РёСЏ С‡Р°СЃС‚РёС†С‹ Рё РІС‹С‡РёСЃР»РµРЅРёРµ РѕСЃРЅРѕРІРЅС‹С… РїР°СЂР°РјРµС‚СЂРѕРІ
+		"float minTLT=min(Time,LifeTime);" //РЎРєРѕР»СЊРєРѕ РІСЂРµРјРµРЅРё РЅР°Р·Р°Рґ РЅРё РѕРґРЅРѕР№ РёР· РѕР±СЂР°Р±Р°С‚С‹РІР°РµРјС‹С… РІ РєР°РґСЂРµ С‡Р°СЃС‚РёС† РµС‰С‘ РЅРµ СЃСѓС‰РµСЃС‚РІРѕРІР°Р»Рѕ
 		"float birthTime=(floor((Time-minTLT)*Rate)+float(ParticleID))/Rate;"
 		"float t=Time-birthTime;"
 		"float leftLT=LifeTime+birthTime-Time;"
 		"float factor=1.0-leftLT/LifeTime;"
 
-		//Состояние эмиттера в момент рождения рассматриваемой частицы
+		//РЎРѕСЃС‚РѕСЏРЅРёРµ СЌРјРёС‚С‚РµСЂР° РІ РјРѕРјРµРЅС‚ СЂРѕР¶РґРµРЅРёСЏ СЂР°СЃСЃРјР°С‚СЂРёРІР°РµРјРѕР№ С‡Р°СЃС‚РёС†С‹
 		"vec3 emitterPosition=GetEmitterPosition(birthTime);"
 		"vec3 emitterRotation=GetEmitterRotationAngles(birthTime);"
 
-		//Начальная координата и скорость рассматриваемой частицы относительно эмиттера
+		//РќР°С‡Р°Р»СЊРЅР°СЏ РєРѕРѕСЂРґРёРЅР°С‚Р° Рё СЃРєРѕСЂРѕСЃС‚СЊ СЂР°СЃСЃРјР°С‚СЂРёРІР°РµРјРѕР№ С‡Р°СЃС‚РёС†С‹ РѕС‚РЅРѕСЃРёС‚РµР»СЊРЅРѕ СЌРјРёС‚С‚РµСЂР°
 		"vec3 origin,startVelocity;"
 		"GetStartParameters(birthTime,origin,startVelocity);"
 
-		//Вычисляем текущие параметры рассматриваемой частицы
+		//Р’С‹С‡РёСЃР»СЏРµРј С‚РµРєСѓС‰РёРµ РїР°СЂР°РјРµС‚СЂС‹ СЂР°СЃСЃРјР°С‚СЂРёРІР°РµРјРѕР№ С‡Р°СЃС‚РёС†С‹
 		"vec3 pos=emitterPosition+RotationEulerMatrix(emitterRotation)*GetPosition(t,origin,startVelocity,birthTime);"
 		"vec4 color=GetColor(factor,t,birthTime);"
 		"float size=GetSize(factor,t,birthTime);"
 
 
-		//Отображение частицы на экран
+		//РћС‚РѕР±СЂР°Р¶РµРЅРёРµ С‡Р°СЃС‚РёС†С‹ РЅР° СЌРєСЂР°РЅ
 		"vec4 eyePos=gl_ModelViewMatrix*vec4(pos,1.);"
 		"vec4 projVoxel=gl_ProjectionMatrix*vec4(vec2(size),eyePos.zw);"
 		"gl_PointSize=0.25/projVoxel.w*dot(ViewportSize,projVoxel.xy);"
