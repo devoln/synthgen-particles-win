@@ -11,41 +11,26 @@
 #include <Windows.h>
 #include <mmsystem.h>
 
-#ifdef _DEBUG
-#define DEBUG_GL
-#endif
+GL gl;
 
-
-extern "C" int _fltused = 0;
-
-// /CRINKLER
-// /CRINKLER /HASHTRIES:300 /COMPMODE:SLOW /ORDERTRIES:4000  /UNALIGNCODE /REPORT:.\exe\out.html
-//Первое намного быстрее, и не сильно уступает в сжатии
-
-
-
-
-
-const GL gl;
-
-#define MUSIC_NUMSAMPLES 60000000
-#define MUSIC_NUMCHANNELS 1
+enum {MUSIC_NUMSAMPLES = 60'000'000};
 
 
 static short music[MUSIC_NUMSAMPLES+22];
 
-extern "C" void WinMainCRTStartup()
+#ifdef _DEBUG
+#pragma comment(linker, "/SUBSYSTEM:CONSOLE")
+#endif
+
+int main()
 {
-	//Sleep(15000);
-	
 	HDC hDC;
 	HGLRC context;
-	CreateGLWindow(&hDC, &context);
+	HWND wnd = CreateGLWindow(&hDC, &context);
 	Demo demo;
-	demo.Init();
 
 	MusicInit(music);
-	sndPlaySoundA((const char*)&music, SND_ASYNC|SND_MEMORY|SND_LOOP);
+	sndPlaySoundA(reinterpret_cast<const char*>(&music), SND_ASYNC|SND_MEMORY|SND_LOOP);
     
     do
     {
@@ -53,9 +38,20 @@ extern "C" void WinMainCRTStartup()
 		demo.RenderFrame();
 		
 		SwapBuffers(hDC);
-		AppProcessMessages();
+		if(AppProcessMessages(wnd)) return 0;
 	}
 	while(!GetAsyncKeyState(VK_ESCAPE));
-
-    ExitProcess(0);
 }
+
+// Make main() work even with /SUBSYSTEM:WINDOWS linker flag
+extern "C" void mainCRTStartup();
+extern "C" void WinMainCRTStartup() {mainCRTStartup();}
+
+// Make main() work without default CRT
+#ifdef LINK_TO_MSVCRT
+extern "C" int _fltused = 0;
+extern "C" void mainCRTStartup()
+{
+	ExitProcess(main());
+}
+#endif

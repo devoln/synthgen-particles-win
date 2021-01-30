@@ -1,4 +1,4 @@
-exe/*.asm
+out/
 .vs/
 
 *.ilk

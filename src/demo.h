@@ -1,24 +1,22 @@
 ﻿#pragma once
 
-#define WIN32_LEAN_AND_MEAN
-#define WIN32_EXTRA_LEAN
-#include <Windows.h>
-
 class Demo
 {
-	int minSizeOrderLoc, maxSizeOrderLoc;
-	int timeLoc, rateLoc, lifeTimeLoc, viewportLoc;
-	int screenWidth, screenHeight;
-
-	unsigned progId, bufId;
-	LARGE_INTEGER prevTime, freq;
-
-	bool paused;
-	float speed;
-	float time, lifeTime, rate;
 public:
-	void Init();
+	Demo();
 	void Step();
 	void RenderFrame();
-};
 
+private:
+	int screenWidth, screenHeight;
+
+	int minSizeOrderLoc, maxSizeOrderLoc;
+	int timeLoc, rateLoc, lifeTimeLoc, viewportLoc;
+
+	unsigned progId, bufId;
+	unsigned long long startTime, prevTime, freq;
+
+	bool paused = false;
+	float speed = 0.5f;
+	float time = 0, lifeTime = 5, rate = 10000;
+};
